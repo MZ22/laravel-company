@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use Illuminate\Http\Request;
+use App\Employee;
+
 
 class DepartmentController extends Controller
 {
@@ -14,7 +16,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::all();
+        return view('departments.index',compact('departments',$departments));
     }
 
     /**
@@ -24,7 +27,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('departments.create');
     }
 
     /**
@@ -35,7 +38,14 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validate
+        /*$request->validate([
+            'title' => 'required|min:3',
+            'description' => 'required',
+        ]);*/
+        
+        $department = Department::create(['dprtname' => $request->dprtname]);
+        return redirect('/departments/'.$department->id);
     }
 
     /**
@@ -46,7 +56,23 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
+        return view('departments.show',compact('department'));
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Department  $department
+     * @return \Illuminate\Http\Response
+     */
+    public function employeesbydprt($department_id)
+    {
+        
+        $employees = Employee::where('iddprt', '=' ,$department_id)->get();
+        $department = Department::where('id', '=' ,$department_id)->first();
+
+        return view('departments.employees',compact('employees','department'));
     }
 
     /**
@@ -57,7 +83,7 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        return view('departments.edit',compact('department')); 
     }
 
     /**
@@ -69,17 +95,29 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        //
+        //Validate
+        /*$request->validate([
+            'title' => 'required|min:3',
+            'description' => 'required',
+        ]);*/
+        
+        $department->dprtname = $request->dprtname;
+        $department->save();
+        $request->session()->flash('message', 'Modification effectué!');
+        return redirect('departments');
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy(Request $request,Department $department)
     {
-        //
+        $department->delete();
+        $request->session()->flash('message', 'Supression effectué!');
+        return redirect('departments');
     }
 }

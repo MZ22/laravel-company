@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('departments/{department_id}/employees', 'DepartmentController@employeesbydprt');
+
+Route::resource('employees', 'EmployeeController');
+
+Route::resource('departments', 'DepartmentController');
+
+
+

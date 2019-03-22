@@ -9,13 +9,10 @@ $factory->define(App\Employee::class, function (Faker $faker) {
         'workdate' => $faker->dateTimeThisCentury->format('d-m-Y'),
         'email' => $faker->unique()->email,
         'phone' => $faker->phoneNumber,
-        'cv' => $faker->name,
+        'cv' => "/storage/files/cv.pdf",
         'jobtitle' => $faker->jobTitle,
         'salary' => $faker->randomNumber(4),
-        'iddprt' => function(){
-            return factory('App\Department')->create()->id;
-        },
-
+        'iddprt' => rand(1, 5),
     ];
 
  
