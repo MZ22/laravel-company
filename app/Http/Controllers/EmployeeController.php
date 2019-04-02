@@ -119,16 +119,34 @@ class EmployeeController extends Controller
             'description' => 'required',
         ]);*/
         
-        $employee->name = $request->name;
-        $employee->birthdate = $request->birthdate;
-        $employee->workdate = $request->workdate;
-        $employee->iddprt = $request->iddprt;
-        $employee->email = $request->email;
-        $employee->phone = $request->phone;
-        $employee->cv = $request->cv;
-        $employee->jobtitle = $request->jobtitle;
-        $employee->salary = $request->salary;
-
+        if(!empty($request->name)){
+            $employee->name = $request->name;
+        }
+        if(!empty($request->birthdate)){
+            $employee->birthdate = $request->birthdate;
+        }
+        if(!empty($request->workdate)){
+            $employee->workdate = $request->workdate;
+        }
+        if(!empty($request->iddprt)){
+            $employee->iddprt = $request->iddprt;
+        }
+        if(!empty($request->email)){
+            $employee->email = $request->email;
+        }
+        if(!empty($request->phone)){
+            $employee->phone = $request->phone;
+        }
+        if(!empty($request->file('cv'))) {
+            $fileName = time().'-'.$request->file('cv')->getClientOriginalName();
+            $employee->cv = '/storage/'.$request->file('cv')->storeAs('files',$fileName);
+        }
+        if(!empty($request->jobtitle)){
+            $employee->jobtitle = $request->jobtitle;
+        }
+        if(!empty($request->salary)){
+            $employee->salary = $request->salary;
+        }
 
         $employee->save();
         $request->session()->flash('message', 'modification effectué!');

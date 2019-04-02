@@ -3,7 +3,7 @@
 @section('content')
     <h1>Modifier Employé</h1>
     <hr>
-    <form action="{{url('employees', [$employee->id])}}" method="POST">
+    <form action="{{url('employees', [$employee->id])}}" method="POST" enctype="multipart/form-data">
      <input type="hidden" name="_method" value="PUT">
      {{ csrf_field() }}
       <div class="form-group">
@@ -35,8 +35,10 @@
         <input type="text" value="{{$employee->phone}}" class="form-control" id="phone"  name="phone" >
       </div>
       <div class="form-group">
-        <label for="cv">CV</label>
-        <input type="text" value="{{$employee->cv}}" class="form-control" id="cv"  name="cv" >
+        <label for="filecv">CV</label>
+        <input type="file" class="form-control-file" name="cv" id="filecv" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted">Please upload a valid pdf file. Size of pdf should not be more than 2MB.</small>
+        <a href="{{$employee->cv}}" target="_blank">CV</a>
       </div>
       <div class="form-group">
         <label for="jobtitle">Poste</label>
