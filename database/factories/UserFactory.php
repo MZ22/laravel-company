@@ -17,7 +17,7 @@ $factory->define(App\User::class, function (Faker $faker) {
     return [
         'name' => "Maryam",
         'email' => "maryam.ramzi.m@gmail.com",
-        'password' => '123456', // secret
+        'password' => "123456", // secret
         'remember_token' => str_random(10),
     ];
 });

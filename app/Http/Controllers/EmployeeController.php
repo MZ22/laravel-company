@@ -52,11 +52,14 @@ class EmployeeController extends Controller
 
         $request->validate([
             'cv' => 'required|max:1024',
+            'image' => 'required|max:4024',
         ]);
 
         /*$fileName = "CV".time().'.'.$request()->cv->getClientOriginalExtension();
         dd($fileName);*/
         $fileName = time().'-'.$request->file('cv')->getClientOriginalName();
+        $imageName = time().'-'.$request->file('image')->getClientOriginalName();
+
 
         //dd('/storage/'.$request->file('cv')->storeAs('files',$fileName));
         
@@ -69,10 +72,11 @@ class EmployeeController extends Controller
              'phone' => $request->phone,
              'cv' => '/storage/'.$request->file('cv')->storeAs('files',$fileName),
              'jobtitle' => $request->jobtitle,
-             'salary' => $request->salary
+             'salary' => $request->salary,
+             'image' => '/storage/'.$request->file('image')->storeAs('files',$imageName),
             ]
         );
-        return redirect('/employees/'.$employee->id);
+        return redirect('/admin/employees/'.$employee->id);
     }
 
     /**
@@ -141,6 +145,10 @@ class EmployeeController extends Controller
             $fileName = time().'-'.$request->file('cv')->getClientOriginalName();
             $employee->cv = '/storage/'.$request->file('cv')->storeAs('files',$fileName);
         }
+        if(!empty($request->file('image'))) {
+            $imageName = time().'-'.$request->file('image')->getClientOriginalName();
+            $employee->image = '/storage/'.$request->file('image')->storeAs('files',$imageName);
+        }
         if(!empty($request->jobtitle)){
             $employee->jobtitle = $request->jobtitle;
         }
@@ -150,7 +158,7 @@ class EmployeeController extends Controller
 
         $employee->save();
         $request->session()->flash('message', 'modification effectué!');
-        return redirect('employees');
+        return redirect('/admin/employees');
     }
 
     /**

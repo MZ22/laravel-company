@@ -37,6 +37,10 @@
 		        <p>
 		            <strong>Salaire :</strong> {{ $employee->salary }}
 		        </p>
+		        <p>
+		            <strong>Image :</strong> 
+		        </p>
+		        <img src="{{ $employee->image }}">
 		    </div>
 	    </div>
     </div>

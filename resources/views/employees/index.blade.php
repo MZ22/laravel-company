@@ -21,17 +21,17 @@
             <tbody>
               @foreach($employees as $employee)
               <tr>
-                <th scope="row">{{$employee->id}}</th>
-                <td><a href="/employees/{{$employee->id}}">{{$employee->name}}</a></td>
+                <td scope="row">{{$employee->id}}</td>
+                <td><a href="/admin/employees/{{$employee->id}}">{{$employee->name}}</a></td>
                 <td>{{$employee->email}}</td>
                 <td>{{$employee->phone}}</td>
                 <td>{{$employee->jobtitle}}</td>
                 <td>
                   <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="{{ URL::to('employees/' . $employee->id . '/edit') }}">
+                    <a href="{{ URL::to('/admin/employees/' . $employee->id . '/edit') }}">
                     	<button type="button" class="btn btn-warning">Edit</button>
                     </a>&nbsp;
-                    <form action="{{url('employees', [$employee->id])}}" method="POST">
+                    <form action="{{url('/admin/employees', [$employee->id])}}" method="POST">
             					<input type="hidden" name="_method" value="DELETE">
            						<input type="hidden" name="_token" value="{{ csrf_token() }}">
            						<input type="submit" class="btn btn-danger" value="Delete"/>
@@ -43,7 +43,7 @@
             </tbody>
           </table>
         </div>
-          <a href="/employees/create" class="btn btn-primary">Créer un employée</a>
+          <a href="/admin/employees/create" class="btn btn-primary">Créer un employée</a>
       </div>
     </div>
 @endsection

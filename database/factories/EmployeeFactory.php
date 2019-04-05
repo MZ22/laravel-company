@@ -10,6 +10,7 @@ $factory->define(App\Employee::class, function (Faker $faker) {
         'email' => $faker->unique()->email,
         'phone' => $faker->phoneNumber,
         'cv' => "/storage/files/cv.pdf",
+        'image' => "/storage/files/divya.jpg",
         'jobtitle' => $faker->jobTitle,
         'salary' => $faker->randomNumber(4),
         'iddprt' => rand(1, 5),

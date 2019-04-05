@@ -45,7 +45,7 @@ class DepartmentController extends Controller
         ]);*/
         
         $department = Department::create(['dprtname' => $request->dprtname]);
-        return redirect('/departments/'.$department->id);
+        return redirect('/admin/departments/'.$department->id);
     }
 
     /**
@@ -104,7 +104,7 @@ class DepartmentController extends Controller
         $department->dprtname = $request->dprtname;
         $department->save();
         $request->session()->flash('message', 'Modification effectué!');
-        return redirect('departments');
+        return redirect('/admin/departments');
     }
 
     /**
@@ -118,6 +118,5 @@ class DepartmentController extends Controller
     {
         $department->delete();
         $request->session()->flash('message', 'Supression effectué!');
-        return redirect('departments');
-    }
+        return redirect('departments'); 
 }

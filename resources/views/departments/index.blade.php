@@ -19,18 +19,18 @@
           <tbody>
             @foreach($departments as $department)
             <tr>
-              <th scope="row">{{$department->id}}</th>
-              <td><a href="/departments/{{$department->id}}">{{$department->dprtname}}</a></td>
+              <td scope="row">{{$department->id}}</td>
+              <td><a href="/admin/departments/{{$department->id}}">{{$department->dprtname}}</a></td>
               <td>{{$department->created_at->toFormattedDateString()}}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <a href="{{ URL::to('departments/' . $department->id . '/employees') }}">
+                  <a href="{{ URL::to('/admin/departments/' . $department->id . '/employees') }}">
                   	<button type="button" class="btn btn-warning">Afficher</button>
                   </a>&nbsp;
-                  <a href="{{ URL::to('departments/' . $department->id . '/edit') }}">
+                  <a href="{{ URL::to('/admin/departments/' . $department->id . '/edit') }}">
                     <button type="button" class="btn btn-warning">Editer</button>
                   </a>&nbsp;
-                  <form action="{{url('departments', [$department->id])}}" method="POST">
+                  <form action="{{url('/admin/departments', [$department->id])}}" method="POST">
           					<input type="hidden" name="_method" value="DELETE">
          						<input type="hidden" name="_token" value="{{ csrf_token() }}">
          						<input type="submit" class="btn btn-danger" value="Supprimer"/>
@@ -42,7 +42,7 @@
           </tbody>
         </table>
       </div>
-      <a href="/departments/create" class="btn btn-primary">Créer un département</a>
+      <a href="/admin/departments/create" class="btn btn-primary">Créer un département</a>
     </div>
   </div>
 @endsection

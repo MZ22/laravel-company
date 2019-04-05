@@ -11,16 +11,38 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/*Route::get('/', function () {
+
+    return view('home');
+});*/
+
+Route::get('/', 'HomeController@index');
+
+
+Route::group(['prefix' => '/admin', 'as' => '/', 'middleware' => 'admin'], function () {
+
+	Route::get('/', function () {
+	    return view('admin');
+	});
+
+	Route::get('/departments/{department_id}/employees', 'DepartmentController@employeesbydprt');
+
+	Route::get('/logout', 'Auth\LoginController@logout');
+
+
+	Route::resource('/employees', 'EmployeeController');
+
+	Route::resource('/departments', 'DepartmentController');
+
+	Route::resource('/articles', 'PostsController');
+
+	Route::resource('/categories', 'PostsCategoriesController');
+
+	Route::resource('/testimonials', 'TestimonialController'); 
+
 });
 
 
-Route::get('departments/{department_id}/employees', 'DepartmentController@employeesbydprt');
-
-Route::resource('employees', 'EmployeeController');
-
-Route::resource('departments', 'DepartmentController');
-
+Auth::routes();
 
 
