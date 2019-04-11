@@ -1,12 +1,27 @@
  @extends('layout.front')
 
+@section('title')
+<div class="page-title">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-12">
+	        <div class="section-headline text-center">
+	          <h1>{{ $post->title }}</h1>
+	        </div>
+	      </div>
+	    </div>
+	</div>
+</div>
+@endsection
+
 @section('contentfront')
+
 <div class="area-padding">
 	<div class="container">    
 	    <div class="row">
 		    <div class="col-12">
 			    <div class="jumbotron text-left">
-			    	<h1>{{ $post->title }}</h1>
+			    	
 
 			    	<img src="{{ $post->image }}" >
 

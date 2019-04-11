@@ -120,6 +120,7 @@
 
 
     <section id="main-front">
+    		@yield('title')
        
          	@yield('contentfront')
      

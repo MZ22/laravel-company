@@ -1,17 +1,23 @@
 @extends('layout.front')
 
+@section('title')
+<div class="page-title">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-12">
+	        <div class="section-headline text-center">
+	          <h1>{{ $category->catname }}</h1>
+	        </div>
+	      </div>
+	    </div>
+	</div>
+</div>
+@endsection
+
 @section('contentfront')
 <div id="blog" class="blog-area">
 	<div class="blog-inner area-padding">
 		<div class="container">
-	        
-		    <div class="row">
-	          <div class="col-12">
-	            <div class="section-headline text-center">
-	              <h1><strong>Catégorie :</strong> {{ $category->catname }}</h1>
-	            </div>
-	          </div>
-	        </div>
 
 			<div class="row">
 	          <!-- Start Left Blog -->
