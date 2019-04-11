@@ -27,7 +27,7 @@ class HomeController extends Controller
 
 		foreach ($posts as $post){
 			$cat = PostsCategories::where('id', '=' ,$post->idcat)->first();
-			$category[$post->id] = $cat->catname;	
+			$category[$post->id] = $cat;	
 		}
 
 		foreach ($employees as $employee){

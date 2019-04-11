@@ -46,3 +46,9 @@ Route::group(['prefix' => '/admin', 'as' => '/', 'middleware' => 'admin'], funct
 Auth::routes();
 
 
+Route::get('/posts/{post}', 'PostController@index');
+
+Route::get('/categories/{category_id}/posts', 'PostCategoriesController@postsbycats');
+
+
+

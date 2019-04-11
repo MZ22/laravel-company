@@ -104,8 +104,8 @@
           <div class="well-left">
             <div class="single-well">
               <a href="#">
-                                  <img src="/img/about/1.jpg" alt="">
-                                </a>
+                <img src="/img/about/1.jpg" alt="">
+              </a>
             </div>
           </div>
         </div>
@@ -179,8 +179,8 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-                                            <i class="fa fa-camera-retro"></i>
-                                        </a>
+                    <i class="fa fa-camera-retro"></i>
+                  </a>
                   <h4>Creative Designer</h4>
                   <p>
                     will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
@@ -196,8 +196,8 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-                                            <i class="fa fa-wordpress"></i>
-                                        </a>
+                    <i class="fa fa-wordpress"></i>
+                  </a>
                   <h4>Wordpress Developer</h4>
                   <p>
                     will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
@@ -213,8 +213,8 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-                                            <i class="fa fa-camera-retro"></i>
-                                        </a>
+                    <i class="fa fa-camera-retro"></i>
+                  </a>
                   <h4>Social Marketer </h4>
                   <p>
                     will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
@@ -231,8 +231,8 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-                                            <i class="fa fa-bar-chart"></i>
-                                        </a>
+                    <i class="fa fa-bar-chart"></i>
+                  </a>
                   <h4>Seo Expart</h4>
                   <p>
                     will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
@@ -249,8 +249,8 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-                                            <i class="fa fa-ticket"></i>
-                                        </a>
+                    <i class="fa fa-ticket"></i>
+                  </a>
                   <h4>24/7 Support</h4>
                   <p>
                     will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
@@ -758,7 +758,7 @@
           <div class="col-4">
             <div class="single-blog">
               <div class="single-blog-img">
-                <a href="blog.html">
+                <a href="/posts/{{$post->id}}">
                   <img src="{{$post->image}}" alt="" width="100%" class="text-center">
                 </a>
               </div>
@@ -767,23 +767,23 @@
                   <i class="fa fa-comment-o"></i>
                   <a href="#">13 comments</a>
                 </span-->
-                <span class="comments-type">
-                  {{$category[$post->id]}}
-                </span>
+                <a class="comments-type" href="/categories/{{$category[$post->id]->id}}/posts" >
+                  {{$category[$post->id]->catname}}
+                </a>
                 <span class="date-type">
                   <i class="fa fa-calendar"></i>{{$post->created_at}}
                 </span>
               </div>
               <div class="blog-text">
                 <h4>
-                    <a href="blog.html">{{$post->title}}</a>
+                  <a href="/posts/{{$post->id}}">{{$post->title}}</a>
                 </h4>
                 <p>
                   {{$post->description}}
                 </p>
               </div>
                 <span>
-                  <a href="blog.html" class="ready-btn">Lire plus</a>
+                  <a href="/posts/{{$post->id}}" class="ready-btn">Lire plus</a>
                 </span>
             </div>
             <!-- Start single blog -->
