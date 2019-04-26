@@ -67,12 +67,13 @@ class DepartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function employeesbydprt($department_id)
-    {
-        
+    { 
         $employees = Employee::where('iddprt', '=' ,$department_id)->get();
         $department = Department::where('id', '=' ,$department_id)->first();
 
-        return view('departments.employees',compact('employees','department'));
+        $emps = $department::find($department_id)->employees()->get();
+
+        return view('departments.employees',compact('employees','department','emps'));
     }
 
     /**
@@ -119,4 +120,5 @@ class DepartmentController extends Controller
         $department->delete();
         $request->session()->flash('message', 'Supression effectué!');
         return redirect('departments'); 
+    }
 }
