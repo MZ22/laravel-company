@@ -17,6 +17,15 @@ class EmployeeController extends Controller
     {
         $employees = Employee::all();
 
+        $title = $employees->whereNotIn('id', 4)
+        ->tap(function ($employees) {
+            $employees = $employees->where('id', 2);
+            //info($employees->values());
+        })
+        ->all();
+         
+        //dd($employees);
+
         foreach ($employees as $employee) {
             $dpt = Department::where('id', '=' ,$employee->iddprt)->first();
             $department[$employee->id] = $dpt->dprtname;
@@ -33,6 +42,7 @@ class EmployeeController extends Controller
     public function create()
     {
         $departments = Department::all();
+        
         return view('employees.create',compact('departments'));
     }
 

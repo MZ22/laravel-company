@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -40,7 +40,7 @@ class LoginController extends Controller
 	public function logout () {
 		//logout user
 		auth()->logout();
-		// redirect to homepage
+		// redirect to login page
 		return redirect('/login');
 	}
 }
