@@ -119,3 +119,4 @@ class PostsController extends Controller
         return redirect('/admin/articles');
     }
 }
+

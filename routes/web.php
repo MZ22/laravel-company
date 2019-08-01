@@ -40,6 +40,8 @@ Route::group(['prefix' => '/admin', 'as' => '/', 'middleware' => 'admin'], funct
 
 	Route::resource('/testimonials', 'TestimonialController'); 
 
+	Route::resource('/tasks', 'TasksController');
+
 });
 
 
@@ -50,5 +52,48 @@ Route::get('/posts/{post}', 'PostController@index');
 
 Route::get('/categories/{category_id}/posts', 'PostCategoriesController@postsbycats');
 
+//Route::resource('/cart', 'CartController'); 
+
+/*Route::get('/cart', 'MyCartController@cart');
+Route::post('/cart', 'ProductController@cartadd');
+Route::post('/cart', 'MyCartController@store');*/
+
+ 
 
 
+
+/*Route::post('/cart', 'MyCartController@save');*/ 
+
+//Route::resource('/cart', 'MyCartController');
+
+//Route::resource('/products', 'ProductController');
+
+Route::get('product-list', 'ProductController@index');
+
+Route::get('cart', 'CartsController@cart');
+
+Route::get('add-to-cart/{id}', 'CartsController@cartadd');
+
+Route::get('update-cart', 'CartsController@cartupdate');
+
+Route::post('ordercart', 'CartsController@savecart');
+
+Route::get('clear-cart', 'CartsController@clearcart');
+
+
+
+Route::get('order/{idcart}', 'OrderController@index');
+
+Route::post('savecustomer', 'OrderController@savecustomer');
+
+Route::post('savecarrier', 'OrderController@savecarrier');
+
+Route::post('savepayment', 'OrderController@savepayment');
+
+Route::get('saveorder/{idcart}', 'OrderController@saveorder');
+
+Route::get('orderconfirm/{idcart}', 'OrderConfirmController@index');
+
+Route::get('logoutcustomer', 'OrderController@logoutcustomer');
+
+Route::post('logincustomer', 'OrderController@logincustomer');

@@ -2366,3 +2366,47 @@ span.email-notes {
 /*----------------------------------------
  .End CSS
 ----------------------------------------*/
+
+#pagetitle {
+    margin-top: 87px;
+    padding: 20px 0;
+    background: #007bff; 
+    color: #fff;
+}
+
+#pagetitle h2{
+  color: #fff;
+  font-weight: 700;
+}
+
+.navbar.navbar-expand-lg.navbar-light.bg-light {
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.panel-title {
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #f1f1f1;
+    border-radius: 5px;
+}
+
+.order-steps {
+    padding: 40px 0;
+}
+
+
+.panel-title a {
+    color: #444;
+}
+
+.order-steps button{
+    padding: 10px 5px;
+    background: #007bff;
+    color: #fff; 
+}   
+
+.order-confirmation {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
